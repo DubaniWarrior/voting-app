@@ -6,7 +6,6 @@ import {faCaretUp} from '@fortawesome/free-solid-svg-icons'
 export default function Product(props) {
 
     const {
-        id,
         title,
         description,
         url,
