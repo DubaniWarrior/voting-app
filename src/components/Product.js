@@ -6,13 +6,20 @@ import {faCaretUp} from '@fortawesome/free-solid-svg-icons'
 export default function Product(props) {
 
     const {
+        id,
         title,
         description,
         url,
         votes,
         submitterAvatarUrl,
-        productImageUrl
+        productImageUrl,
+        onVote
     } = props;
+
+    const handleUpVote = () => {
+        onVote(id)
+    };
+
     return (
         <div className='item my-5'>
             <Container>
@@ -25,7 +32,11 @@ export default function Product(props) {
                     <Col className='d-flex align-items-center'>
                         <div className=" align-items-center h-100">
                             <div className=" header align-items-center">
-                                <FontAwesomeIcon icon={faCaretUp} size='3x' className='font-icon'/>
+                                <FontAwesomeIcon
+                                    icon={faCaretUp}
+                                    size='3x'
+                                    onClick={handleUpVote}
+                                    className='font-icon'/>
                                 <span className='ml-3 vote'>{votes}</span>
                             </div>
                             <div className='description'>

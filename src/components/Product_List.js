@@ -5,8 +5,33 @@ import {Container, Row, Col} from 'reactstrap';
 import React, {Component} from 'react'
 
 export default class ProductList extends Component {
+    state = {
+        products: []
+    };
+
+    componentDidMount() {
+        this.setState({products: Seed.products})
+    }
+
+    handleProductUpVote = (productId) => {
+        const nextProducts = this
+            .state
+            .products
+            .map((product) => {
+                if (product.id === productId) {
+                    return Object.assign({}, product, {
+                        votes: product.votes + 1
+                    });
+                } else {
+                    return product;
+                }
+            });
+        this.setState({products: nextProducts})
+    };
+
     render() {
-        const products = Seed
+        const products = this
+            .state
             .products
             .sort((a, b) => (b.votes - a.votes));
         const productComponents = products.map((product) => (<Product
@@ -18,7 +43,8 @@ export default class ProductList extends Component {
             votes={product.votes}
             submitterAvatarUrl={product.submitterAvatarUrl}
             productImageUrl
-            ={product.productImageUrl}/>));
+            ={product.productImageUrl}
+            onVote={this.handleProductUpVote}/>));
         return (
             <div className=''>
                 <Container>
