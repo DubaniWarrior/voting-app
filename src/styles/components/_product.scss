@@ -1,0 +1,41 @@
+.avatar {
+    height: 4rem;
+    border-radius: 10rem;
+}
+
+.image-product {
+    height: 100%;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.extra span {
+    color: rgba($color:grey, $alpha:0.8);
+}
+
+.description {
+
+    & p {
+        font-weight: bold;
+        line-height: 3rem;
+    }
+}
+
+.header {
+    position: relative;
+}
+
+.vote {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+.font-icon {
+    color: greenyellow;
+}
